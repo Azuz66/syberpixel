@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyberPixel SMP</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+particlesJS.load('particles-js', 'particles.json');
+</script>
+<div id="particles-js"></div>
+
+<script>
+fetch("http://localhost:3000/top-donators")
+.then(res => res.json())
+.then(data => {
+  console.log(data);
+});
+
+</script>
+<audio id="clickSound" src="click.mp3"></audio>
+
+<script>
+document.querySelectorAll("button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.getElementById("clickSound").play();
+  });
+});
+</script>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<div class="sidebar" id="sidebar">
+  <a onclick="showSection('home')">Home</a>
+  <a onclick="showSection('store')">Store</a>
+  <a onclick="showSection('media')">Media</a>
+  <a onclick="showSection('appeal')">Appeals</a>
+  <a onclick="showSection('report')">Report</a>
+  <a onclick="showSection('top')">Top Donators</a>
+  <a onclick="showSection('staff')">Staff</a>
+</div>
+
+<!-- HOME -->
+<section id="home" class="section active">
+  <img src="logo.webp" class="logo" alt="SyberPixel SMP Logo">
+  <h1>Welcome to <span>SyberPixel</span> SMP</h1>
+  <p>The Ultimate Minecraft Survival Experience</p>
+
+  <div class="card">
+    <h2>Server IP</h2>
+    <p>syberpixelsmp.falixsrv.me</p>
+    <button type="button" onclick="copyIP()">Copy IP</button>
+  </div>
+
+  <div class="card">
+    <h2>Status</h2>
+    <p class="offline">● Offline</p>
+  </div>
+</section>
+
+<!-- STORE -->
+<section id="store" class="section">
+  <h1>Server Ranks</h1>
+  <div class="rank-container">
+
+    <div class="rank king">
+      <h2>KING 👑</h2>
+      <ul>
+        <li>500K Money</li>
+        <li>Exclusive Kit</li>
+        <li>Golden Chat</li>
+      </ul>
+      <button type="button" onclick="buy()">Buy</button>
+    </div>
+
+    <div class="rank fighter">
+      <h2>FIGHTER ⚔</h2>
+      <ul>
+        <li>250K Money</li>
+        <li>PvP Kit</li>
+      </ul>
+      <button type="button" onclick="buy()">Buy</button>
+    </div>
+
+    <div class="rank guard">
+      <h2>GUARD 🛡</h2>
+      <ul>
+        <li>100K Money</li>
+        <li>Guard Kit</li>
+      </ul>
+      <button type="button" onclick="buy()">Buy</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section id="media" class="section">
+  <h1>Media Rank</h1>
+  <div class="card">
+    <p>Apply for Media through our Discord.</p>
+    <button type="button" onclick="window.open('https://discord.gg/YOURINVITE')">
+      Apply Now
+    </button>
+  </div>
+</section>
+
+<!-- APPEALS -->
+<section id="appeal" class="section">
+  <h1>Ban / Mute Appeal</h1>
+
+  <div class="card">
+    <form id="appealForm">
+      <input id="appealUser" placeholder="Minecraft Username" required>
+      <textarea id="appealReason" placeholder="Explain your appeal" required></textarea>
+      <button type="submit">Submit Appeal</button>
+    </form>
+  </div>
+</section>
+
+<!-- REPORT -->
+<section id="report" class="section">
+  <h1>Report Player</h1>
+
+  <div class="card">
+    <form id="reportForm">
+      <input id="reporter" placeholder="Your Username" required>
+      <input id="reported" placeholder="Reported Player" required>
+      <textarea id="reason" placeholder="Explain issue" required></textarea>
+      <button type="submit">Submit Report</button>
+    </form>
+  </div>
+</section>
+
+<!-- TOP -->
+<section id="top" class="section">
+  <h1>Top Donators</h1>
+  <div class="card">🥇 PlayerOne - $120</div>
+  <div class="card">🥈 PlayerTwo - $95</div>
+  <div class="card">🥉 PlayerThree - $60</div>
+</section>
+
+<!-- STAFF -->
+<section id="staff" class="section">
+  <h1>Staff of the Week</h1>
+  <div class="card">
+    <h2>AdminName</h2>
+    <p>For helping the community ❤️</p>
+  </div>
+</section>
+
+<script src="script.js"></script>
+
+<canvas id="stars"></canvas>
+<script src="stars.js"></script>
+
+</body>
+</html>

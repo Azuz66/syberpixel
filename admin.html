@@ -1,0 +1,12 @@
+<h1>Staff Dashboard</h1>
+
+<div id="reports"></div>
+
+<script>
+fetch("http://localhost:3000/top-donators")
+.then(res => res.json())
+.then(data => {
+  document.getElementById("reports").innerHTML =
+    JSON.stringify(data, null, 2);
+});
+</script>
